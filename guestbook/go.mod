@@ -1,4 +1,4 @@
-module github.com/kylegalloway/guestbook
+module github.com/kylegalloway/kubebuilder
 
 go 1.24.0
 

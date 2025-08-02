@@ -7,7 +7,7 @@ domain: gallowayhq.com
 layout:
 - go.kubebuilder.io/v4
 projectName: guestbook
-repo: github.com/kylegalloway/guestbook
+repo: github.com/kylegalloway/kubebuilder
 resources:
 - api:
     crdVersion: v1
@@ -16,6 +16,6 @@ resources:
   domain: gallowayhq.com
   group: webapp
   kind: Guestbook
-  path: github.com/kylegalloway/guestbook/api/v1
+  path: github.com/kylegalloway/kubebuilder/api/v1
   version: v1
 version: "3"
