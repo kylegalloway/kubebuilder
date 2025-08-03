@@ -4,18 +4,18 @@ metadata:
   labels:
     app.kubernetes.io/name: jobrunner
     app.kubernetes.io/managed-by: kustomize
-  name: leviathanbuild-sample
+  name: leviathanbuild-sample2
 spec:
-  packageName: testyMcTestFace
+  packageName: testyMcTestFace2
   buildType: Build  # default
   sourceType: Local  # default
-  sourcePath: "testPath/path"
+  sourcePath: "testPath2/path2"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-          - name: hello
+          - name: hello2
             image: busybox
             args:
             - /bin/sh

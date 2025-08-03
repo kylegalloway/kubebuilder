@@ -1,7 +1,7 @@
 package v1
 
 import (
-	// batchv1 "k8s.io/api/batch/v1"
+	batchv1 "k8s.io/api/batch/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -18,6 +18,7 @@ type LeviathanBuildSpec struct {
 	// +required
 	PackageName *string `json:"packageName"`
 
+	// TODO: Add webhooks to handle default setting on admission
 	// buildType is the type of build
 	// - "Build" (default): runs a build of the given package;
 	// - "BuildPublish": runs a build and publish of the given package;
@@ -26,12 +27,13 @@ type LeviathanBuildSpec struct {
 	// +kubebuilder:default:=Build
 	BuildType BuildType `json:"buildType,omitempty"`
 
+	// TODO: Add webhooks to handle default setting on admission
 	// sourceType indicates the type of source that should be pulled from
 	// - "Local" (default): Use a local path for the source
 	// - "Git": Pull the source from git
 	// - "S3": Pull the source from an s3 bucket
 	// +optional
-	// +kubebuilder:default:=Build
+	// +kubebuilder:default:=Local
 	SourceType SourceType `json:"sourceType,omitempty"`
 
 	// sourcePath indicates the path that the source should be pulled from
@@ -42,27 +44,15 @@ type LeviathanBuildSpec struct {
 	// +optional
 	SourceURL *string `json:"sourceURL,omitempty"`
 
-	// // job defines the job that will be created when executing the given build.
-	// // +required
-	// Job batchv1.JobSpec `json:"job"`
-
-	// successfulJobsHistoryLimit defines the number of successful finished jobs to retain.
-	// This is a pointer to distinguish between explicit zero and not specified.
-	// +optional
-	// +kubebuilder:validation:Minimum=0
-	SuccessfulJobsHistoryLimit *int32 `json:"successfulJobsHistoryLimit,omitempty"`
-
-	// failedJobsHistoryLimit defines the number of failed finished jobs to retain.
-	// This is a pointer to distinguish between explicit zero and not specified.
-	// +optional
-	// +kubebuilder:validation:Minimum=0
-	FailedJobsHistoryLimit *int32 `json:"failedJobsHistoryLimit,omitempty"`
+	// job defines the job that will be created when executing the given build.
+	// +required
+	JobTemplate batchv1.JobTemplateSpec `json:"jobTemplate"`
 }
 
 // BuildType describes how the job will be handled.
 // Only one of the following build types may be specified.
 // If none of the following types is specified, the default is build.
-// +kubebuilder:validation:Enum=Allow;Forbid;Replace
+// +kubebuilder:validation:Enum=Build;BuildPublish;Publish
 type BuildType string
 
 const (
