@@ -16,7 +16,7 @@ rules:
 - apiGroups:
   - cache.gallowayhq.com
   resources:
-  - memcacheds
+  - memcached
   verbs:
   - create
   - delete
@@ -28,6 +28,6 @@ rules:
 - apiGroups:
   - cache.gallowayhq.com
   resources:
-  - memcacheds/status
+  - memcached/status
   verbs:
   - get

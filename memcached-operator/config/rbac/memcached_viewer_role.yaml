@@ -16,7 +16,7 @@ rules:
 - apiGroups:
   - cache.gallowayhq.com
   resources:
-  - memcacheds
+  - memcached
   verbs:
   - get
   - list
@@ -24,6 +24,6 @@ rules:
 - apiGroups:
   - cache.gallowayhq.com
   resources:
-  - memcacheds/status
+  - memcached/status
   verbs:
   - get

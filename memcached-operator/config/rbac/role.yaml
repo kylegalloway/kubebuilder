@@ -5,9 +5,24 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
-  - cache.gallowayhq.com
+  - ""
   resources:
-  - memcacheds
+  - events
+  verbs:
+  - create
+  - patch
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
   verbs:
   - create
   - delete
@@ -19,13 +34,25 @@ rules:
 - apiGroups:
   - cache.gallowayhq.com
   resources:
-  - memcacheds/finalizers
+  - memcached
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cache.gallowayhq.com
+  resources:
+  - memcached/finalizers
   verbs:
   - update
 - apiGroups:
   - cache.gallowayhq.com
   resources:
-  - memcacheds/status
+  - memcached/status
   verbs:
   - get
   - patch

@@ -16,12 +16,12 @@ rules:
 - apiGroups:
   - cache.gallowayhq.com
   resources:
-  - memcacheds
+  - memcached
   verbs:
   - '*'
 - apiGroups:
   - cache.gallowayhq.com
   resources:
-  - memcacheds/status
+  - memcached/status
   verbs:
   - get
