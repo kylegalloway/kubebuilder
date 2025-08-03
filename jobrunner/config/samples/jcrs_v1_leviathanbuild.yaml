@@ -1,4 +1,4 @@
-apiVersion: jcrs.jcrs.dev/v1alpha1
+apiVersion: jcrs.jcrs.dev/v1
 kind: LeviathanBuild
 metadata:
   labels:

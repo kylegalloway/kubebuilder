@@ -16,6 +16,6 @@ resources:
   domain: jcrs.dev
   group: jcrs
   kind: LeviathanBuild
-  path: test.jcrs.dev/jobrunner/api/v1alpha1
-  version: v1alpha1
+  path: test.jcrs.dev/jobrunner/api/v1
+  version: v1
 version: "3"
