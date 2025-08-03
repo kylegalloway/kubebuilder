@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- jcrs_v1alpha1_leviathanbuild.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples
